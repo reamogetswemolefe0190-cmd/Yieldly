@@ -99,7 +99,7 @@ export default function CreateStokvelPage() {
               <div>
                 <Label className="text-sm text-[#4A4A5A] font-medium">Goal</Label>
                 <Select value={goal} onValueChange={(v) => setGoal(v || "")}>
-                  <SelectTrigger className={`mt-1.5 ${errors.goal ? "border-[#E76F51]" : ""}`}>
+                  <SelectTrigger className={`mt-1.5 w-full ${errors.goal ? "border-[#E76F51]" : ""}`}>
                     <SelectValue placeholder="Select a goal" />
                   </SelectTrigger>
                   <SelectContent>

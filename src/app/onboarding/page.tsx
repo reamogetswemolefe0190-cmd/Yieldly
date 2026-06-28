@@ -283,7 +283,7 @@ export default function OnboardingPage() {
                       <div>
                         <Label className="text-sm text-[#4A4A5A] font-medium">Employment status</Label>
                         <Select value={data.employmentStatus} onValueChange={(v) => update("employmentStatus", v || "")}>
-                          <SelectTrigger className={`mt-1.5 ${errors.employmentStatus ? "border-[#E76F51]" : ""}`}>
+                          <SelectTrigger className={`mt-1.5 w-full ${errors.employmentStatus ? "border-[#E76F51]" : ""}`}>
                             <SelectValue placeholder="Select status" />
                           </SelectTrigger>
                           <SelectContent>
@@ -524,7 +524,7 @@ export default function OnboardingPage() {
                         <div>
                           <Label className="text-sm text-[#4A4A5A] font-medium">Bank</Label>
                           <Select value={data.bankName} onValueChange={(v) => update("bankName", v || "")}>
-                            <SelectTrigger className={`mt-1.5 ${errors.bankName ? "border-[#E76F51]" : ""}`}>
+                            <SelectTrigger className={`mt-1.5 w-full ${errors.bankName ? "border-[#E76F51]" : ""}`}>
                               <SelectValue placeholder="Select bank" />
                             </SelectTrigger>
                             <SelectContent>
