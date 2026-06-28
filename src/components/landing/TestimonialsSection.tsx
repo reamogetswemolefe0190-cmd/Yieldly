@@ -1,66 +1,75 @@
 "use client";
 
 import React from "react";
-import { Quote } from "lucide-react";
+import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    quote:
-      "Yieldly helped our group save R 45 000 in 18 months for a family home deposit. The ETF tracking made it feel real.",
-    name: "Thando M.",
+    name: "Thabo M.",
     location: "Johannesburg",
-    initials: "TM",
+    text: "Yieldly helped our community buy our first property. The transparency and trust is exactly what we needed.",
+    rating: 5,
   },
   {
-    quote:
-      "Finally, a stokvel that feels modern. I love seeing exactly how our pooled money is growing every month.",
-    name: "Sizwe K.",
-    location: "Durban",
-    initials: "SK",
-  },
-  {
-    quote:
-      "We started a business stokvel on Yieldly and hit our goal in 2 years. The community aspect kept us accountable.",
     name: "Lerato N.",
     location: "Cape Town",
-    initials: "LN",
+    text: "I love how easy it is to track our progress. Seeing our ETF allocation grow each month keeps us motivated.",
+    rating: 5,
+  },
+  {
+    name: "Sizwe K.",
+    location: "Durban",
+    text: "The stokvel culture is strong in our community, but Yieldly made it modern. No more spreadsheets and WhatsApp groups.",
+    rating: 4,
   },
 ];
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="py-16 md:py-24 bg-[#F6F7F9]">
+    <section id="testimonials" className="bg-[#F6F7F9] py-20 md:py-28">
       <div className="max-w-[1280px] mx-auto px-4 md:px-6">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
+          <span className="text-xs font-semibold uppercase tracking-wider text-[#0B8C6B] mb-3 block">
+            Testimonials
+          </span>
           <h2
             className="text-3xl md:text-4xl font-bold text-[#1A1A2E] mb-4"
             style={{ fontFamily: "var(--font-poppins)" }}
           >
-            What our community says
+            Loved by South Africans
           </h2>
-          <p className="text-base md:text-lg text-[#4A4A5A]">
-            Real stories from South Africans building wealth together.
+          <p className="text-lg text-[#4A4A5A] max-w-[480px] mx-auto">
+            Join thousands who are already building wealth together.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((t, idx) => (
             <div
-              key={t.name}
-              className="bg-white rounded-2xl p-8 border border-[#E2E4E8]"
+              key={idx}
+              className="bg-white rounded-2xl p-8 transition-all hover:shadow-lg"
             >
-              <Quote className="w-8 h-8 text-[#0B8C6B] opacity-20 mb-4" />
-              <p className="text-base text-[#1A1A2E] leading-relaxed mb-6">
-                {t.quote}
+              <div className="flex items-center gap-1 mb-4">
+                {[1, 2, 3, 4, 5].map((s) => (
+                  <Star
+                    key={s}
+                    className={`w-4 h-4 ${
+                      s <= t.rating
+                        ? "fill-[#E9C46A] text-[#E9C46A]"
+                        : "fill-[#E2E4E8] text-[#E2E4E8]"
+                    }`}
+                  />
+                ))}
+              </div>
+              <p className="text-[#1A1A2E] mb-6 leading-relaxed">
+                "{t.text}"
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#E2F0EC] flex items-center justify-center text-[#0B8C6B] text-sm font-bold">
-                  {t.initials}
+                <div className="w-10 h-10 rounded-full bg-[#0B8C6B] flex items-center justify-center text-white font-semibold text-sm">
+                  {t.name[0]}
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-[#1A1A2E]">
-                    {t.name}
-                  </p>
+                  <p className="text-sm font-medium text-[#1A1A2E]">{t.name}</p>
                   <p className="text-xs text-[#8A8A9A]">{t.location}</p>
                 </div>
               </div>

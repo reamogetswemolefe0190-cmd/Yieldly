@@ -2,83 +2,97 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-white">
+    <section className="bg-white pt-16 pb-20 md:pt-24 md:pb-32">
       <div className="max-w-[1280px] mx-auto px-4 md:px-6">
-        <div className="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12">
-          {/* Text block */}
-          <div className="w-full md:w-[55%] text-center md:text-left">
-            <p className="text-xs font-semibold uppercase tracking-wider text-[#0B8C6B] mb-4">
-              South Africa&apos;s first digital stokvel platform
-            </p>
-            <h1
-              className="text-4xl md:text-5xl lg:text-[56px] leading-tight font-bold text-[#1A1A2E] mb-6"
-              style={{ fontFamily: "var(--font-poppins)" }}
-            >
-              Save together. Build wealth. Together.
-            </h1>
-            <p className="text-base md:text-lg text-[#4A4A5A] max-w-[480px] mx-auto md:mx-0 mb-8">
-              Yieldly brings the trusted stokvel tradition into the digital age. Pool money with your community and invest in ETFs aligned to your shared goals.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start mb-4">
-              <Link
-                href="/register"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-[#0B8C6B] text-white font-medium text-base hover:bg-[#14A085] transition-colors"
-              >
-                Get started free
-              </Link>
-              <a
-                href="#how-it-works"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-[#E2E4E8] text-[#1A1A2E] font-medium text-base hover:bg-[#F6F7F9] transition-colors"
-              >
-                See how it works
-                <ArrowDown className="w-4 h-4" />
-              </a>
-            </div>
-            <p className="text-xs text-[#8A8A9A]">
-              No fees to join. Your money stays in ZAR. 🇿🇦
-            </p>
+        <div className="flex flex-col items-center text-center max-w-[680px] mx-auto">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E2F0EC] text-[#0B8C6B] text-sm font-medium mb-8">
+            <span className="w-2 h-2 rounded-full bg-[#0B8C6B]" />
+            South Africa&apos;s first digital stokvel platform
           </div>
 
-          {/* Image block */}
-          <div className="w-full md:w-[45%]">
-            <div
-              className="w-full h-[280px] md:h-[400px] rounded-2xl shadow-[0_4px_24px_rgba(26,26,46,0.08)] overflow-hidden relative"
-              style={{
-                background: "linear-gradient(135deg, #0B8C6B 0%, #14A085 40%, #E88D3A 100%)",
-              }}
+          {/* Headline */}
+          <h1
+            className="text-4xl md:text-5xl lg:text-[56px] leading-[1.15] font-bold text-[#1A1A2E] mb-6"
+            style={{ fontFamily: "var(--font-poppins)" }}
+          >
+            Save together.
+            <br />
+            Build wealth.
+            <br />
+            <span className="text-[#0B8C6B]">Together.</span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-lg md:text-xl text-[#4A4A5A] max-w-[520px] mb-10 leading-relaxed">
+            Yieldly brings the trusted stokvel tradition into the digital age. Pool money with your community and invest in ETFs aligned to your shared goals.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-center gap-4 mb-16">
+            <Link
+              href="/register"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#0B8C6B] text-white font-semibold text-base hover:bg-[#14A085] transition-all hover:shadow-lg hover:-translate-y-0.5"
             >
-              <div className="absolute inset-0 opacity-20">
-                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <pattern id="hero-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                      <circle cx="20" cy="20" r="2" fill="white" />
-                      <circle cx="0" cy="0" r="1.5" fill="white" />
-                      <circle cx="40" cy="0" r="1.5" fill="white" />
-                      <circle cx="0" cy="40" r="1.5" fill="white" />
-                      <circle cx="40" cy="40" r="1.5" fill="white" />
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill="url(#hero-pattern)" />
-                </svg>
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-white text-center">
-                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                      <circle cx="9" cy="7" r="4" />
-                      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                    </svg>
-                  </div>
-                  <p className="text-lg font-semibold" style={{ fontFamily: "var(--font-poppins)" }}>Community First</p>
-                </div>
-              </div>
+              Get started free
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+            <a
+              href="#how-it-works"
+              className="text-[#4A4A5A] font-medium hover:text-[#0B8C6B] transition-colors"
+            >
+              See how it works
+            </a>
+          </div>
+
+          {/* Simple illustration */}
+          <div className="w-full max-w-[480px]">
+            <div className="relative">
+              {/* Clean SVG illustration */}
+              <svg
+                viewBox="0 0 480 280"
+                className="w-full h-auto"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {/* Background circle */}
+                <circle cx="240" cy="140" r="120" fill="#E2F0EC" opacity="0.5" />
+                
+                {/* People icons */}
+                <circle cx="160" cy="120" r="24" fill="#0B8C6B" opacity="0.15" />
+                <circle cx="160" cy="120" r="12" fill="#0B8C6B" opacity="0.3" />
+                
+                <circle cx="320" cy="120" r="24" fill="#E88D3A" opacity="0.15" />
+                <circle cx="320" cy="120" r="12" fill="#E88D3A" opacity="0.3" />
+                
+                <circle cx="240" cy="80" r="24" fill="#14A085" opacity="0.15" />
+                <circle cx="240" cy="80" r="12" fill="#14A085" opacity="0.3" />
+                
+                <circle cx="200" cy="170" r="24" fill="#2A9D8F" opacity="0.15" />
+                <circle cx="200" cy="170" r="12" fill="#2A9D8F" opacity="0.3" />
+                
+                <circle cx="280" cy="170" r="24" fill="#B8860B" opacity="0.15" />
+                <circle cx="280" cy="170" r="12" fill="#B8860B" opacity="0.3" />
+                
+                {/* Center money icon */}
+                <circle cx="240" cy="140" r="32" fill="#0B8C6B" opacity="0.9" />
+                <text x="240" y="148" textAnchor="middle" fill="white" fontSize="24" fontWeight="bold" fontFamily="var(--font-poppins)">R</text>
+                
+                {/* Connection lines */}
+                <line x1="240" y1="108" x2="240" y2="80" stroke="#0B8C6B" strokeWidth="2" opacity="0.3" strokeDasharray="4 4" />
+                <line x1="172" y1="132" x2="160" y2="120" stroke="#0B8C6B" strokeWidth="2" opacity="0.3" strokeDasharray="4 4" />
+                <line x1="308" y1="132" x2="320" y2="120" stroke="#E88D3A" strokeWidth="2" opacity="0.3" strokeDasharray="4 4" />
+                <line x1="212" y1="158" x2="200" y2="170" stroke="#2A9D8F" strokeWidth="2" opacity="0.3" strokeDasharray="4 4" />
+                <line x1="268" y1="158" x2="280" y2="170" stroke="#B8860B" strokeWidth="2" opacity="0.3" strokeDasharray="4 4" />
+              </svg>
             </div>
+            <p className="text-center text-xs text-[#8A8A9A] mt-4">
+              Join a community of savers and watch your money grow together.
+            </p>
           </div>
         </div>
       </div>
