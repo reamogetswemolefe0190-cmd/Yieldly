@@ -12,6 +12,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import {
   Wallet,
   Users,
+  Calculator,
   TrendingUp,
   Search,
   Plus,
@@ -27,8 +28,8 @@ import { toast } from "sonner";
 function StatsCards({ loading }: { loading: boolean }) {
   if (loading) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
-        {[1, 2, 3].map((i) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6">
+        {[1, 2, 3, 4].map((i) => (
           <div key={i} className="bg-white rounded-2xl border border-[#E2E4E8] p-6">
             <Skeleton className="h-12 w-12 rounded-full mb-4" />
             <Skeleton className="h-8 w-32 mb-2" />
@@ -67,10 +68,19 @@ function StatsCards({ loading }: { loading: boolean }) {
       trend: "+27% estimated growth",
       trendColor: "#2A9D8F",
     },
+    {
+      icon: Calculator,
+      iconBg: "#FEF3E2",
+      iconColor: "#E88D3A",
+      label: "Projected interest",
+      value: "R 6 700.00",
+      trend: "Based on moderate ETF yield",
+      trendColor: "#E88D3A",
+    },
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6">
       {stats.map((stat, idx) => {
         const Icon = stat.icon;
         return (
