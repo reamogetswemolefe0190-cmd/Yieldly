@@ -72,9 +72,9 @@ function StatsCards({ loading }: { loading: boolean }) {
       icon: Calculator,
       iconBg: "#FEF3E2",
       iconColor: "#E88D3A",
-      label: "Projected interest",
-      value: "R 6 700.00",
-      trend: "Based on moderate ETF yield",
+      label: "Est. annual yield",
+      value: "7.2%",
+      trend: "Based on moderate ETF allocation",
       trendColor: "#E88D3A",
     },
   ];
