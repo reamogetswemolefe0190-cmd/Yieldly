@@ -98,3 +98,20 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #8A8A9A;
 }
+
+/* Fix for shadcn Select dropdown background on GitHub Pages */
+[data-slot="select-content"] {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E4E8 !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08) !important;
+}
+
+[data-slot="select-item"] {
+  color: #1A1A2E !important;
+}
+
+[data-slot="select-item"]:hover,
+[data-slot="select-item"][data-highlighted] {
+  background-color: #E2F0EC !important;
+  color: #0B8C6B !important;
+}
