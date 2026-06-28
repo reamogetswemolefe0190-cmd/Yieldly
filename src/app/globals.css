@@ -27,6 +27,29 @@
   --color-risk-aggressive-bg: #FDE8E4;
   --color-risk-aggressive-text: #C0392B;
 
+  /* Shadcn UI required theme variables */
+  --color-background: #F6F7F9;
+  --color-foreground: #1A1A2E;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #1A1A2E;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #1A1A2E;
+  --color-secondary: #F6F7F9;
+  --color-secondary-foreground: #1A1A2E;
+  --color-muted: #F6F7F9;
+  --color-muted-foreground: #8A8A9A;
+  --color-accent: #E2F0EC;
+  --color-accent-foreground: #0B8C6B;
+  --color-destructive: #E76F51;
+  --color-destructive-foreground: #FFFFFF;
+  --color-input: #E2E4E8;
+  --color-ring: #0B8C6B;
+  --color-chart-1: #0B8C6B;
+  --color-chart-2: #E88D3A;
+  --color-chart-3: #2A9D8F;
+  --color-chart-4: #E9C46A;
+  --color-chart-5: #E76F51;
+
   /* Fonts */
   --font-sans: var(--font-inter);
   --font-heading: var(--font-poppins);
