@@ -9,38 +9,26 @@ const testimonials = [
     location: "Johannesburg",
     text: "Yieldly helped our community buy our first property. The transparency and trust is exactly what we needed.",
     rating: 5,
-    avatar: { color: "#0B8C6B", face: "#E2F0EC" },
+    initial: "T",
+    color: "#0B8C6B",
   },
   {
     name: "Lerato N.",
     location: "Cape Town",
     text: "I love how easy it is to track our progress. Seeing our ETF allocation grow each month keeps us motivated.",
     rating: 5,
-    avatar: { color: "#E88D3A", face: "#FEF3E2" },
+    initial: "L",
+    color: "#E88D3A",
   },
   {
     name: "Sizwe K.",
     location: "Durban",
     text: "The stokvel culture is strong in our community, but Yieldly made it modern. No more spreadsheets and WhatsApp groups.",
     rating: 5,
-    avatar: { color: "#14A085", face: "#E2F0EC" },
+    initial: "S",
+    color: "#14A085",
   },
 ];
-
-function TestimonialAvatar({ color, face }: { color: string; face: string }) {
-  return (
-    <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0" style={{ backgroundColor: color }}>
-      <svg viewBox="0 0 80 80" className="w-full h-full">
-        <circle cx="40" cy="40" r="40" fill={color} />
-        <circle cx="40" cy="40" r="24" fill={face} />
-        <circle cx="32" cy="35" r="3" fill="#1A1A2E" opacity="0.7" />
-        <circle cx="48" cy="35" r="3" fill="#1A1A2E" opacity="0.7" />
-        <path d="M 30 46 Q 40 54 50 46" stroke="#1A1A2E" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.7" />
-        <ellipse cx="40" cy="22" rx="16" ry="8" fill={color} opacity="0.3" />
-      </svg>
-    </div>
-  );
-}
 
 export function TestimonialsSection() {
   return (
@@ -83,7 +71,12 @@ export function TestimonialsSection() {
                 "{t.text}"
               </p>
               <div className="flex items-center gap-3">
-                <TestimonialAvatar color={t.avatar.color} face={t.avatar.face} />
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold text-sm"
+                  style={{ backgroundColor: t.color }}
+                >
+                  {t.initial}
+                </div>
                 <div>
                   <p className="text-sm font-medium text-[#1A1A2E]">{t.name}</p>
                   <p className="text-xs text-[#8A8A9A]">{t.location}</p>
