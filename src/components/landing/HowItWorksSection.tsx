@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Users, Target, TrendingUp, ArrowRight } from "lucide-react";
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/shared/FadeIn";
 
 const steps = [
   {
@@ -32,52 +33,57 @@ export function HowItWorksSection() {
     <section id="how-it-works" className="bg-[#F6F7F9] py-20 md:py-28">
       <div className="max-w-[1280px] mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#0B8C6B] mb-3 block">
-            How it works
-          </span>
-          <h2
-            className="text-3xl md:text-4xl font-bold text-[#1A1A2E] mb-4"
-            style={{ fontFamily: "var(--font-poppins)" }}
-          >
-            Three steps to wealth
-          </h2>
-          <p className="text-lg text-[#4A4A5A] max-w-[480px] mx-auto">
-            Getting started with Yieldly is simple. No complicated paperwork, no hidden fees.
-          </p>
+          <FadeIn>
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#0B8C6B] mb-3 block">
+              How it works
+            </span>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <h2
+              className="text-3xl md:text-4xl font-bold text-[#1A1A2E] mb-4"
+              style={{ fontFamily: "var(--font-poppins)" }}
+            >
+              Three steps to wealth
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <p className="text-lg text-[#4A4A5A] max-w-[480px] mx-auto">
+              Getting started with Yieldly is simple. No complicated paperwork, no hidden fees.
+            </p>
+          </FadeIn>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {steps.map((step, idx) => {
             const Icon = step.icon;
             return (
-              <div
-                key={idx}
-                className="bg-white rounded-2xl p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1"
-              >
-                <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6"
-                  style={{ backgroundColor: step.iconBg }}
-                >
-                  <Icon className="w-7 h-7" style={{ color: step.iconColor }} />
+              <StaggerItem key={idx}>
+                <div className="bg-white rounded-2xl p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1">
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6"
+                    style={{ backgroundColor: step.iconBg }}
+                  >
+                    <Icon className="w-7 h-7" style={{ color: step.iconColor }} />
+                  </div>
+                  <span className="text-xs font-semibold text-[#8A8A9A] uppercase tracking-wider mb-3 block">
+                    Step {idx + 1}
+                  </span>
+                  <h3
+                    className="text-xl font-semibold text-[#1A1A2E] mb-3"
+                    style={{ fontFamily: "var(--font-poppins)" }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-[#4A4A5A] leading-relaxed">
+                    {step.description}
+                  </p>
                 </div>
-                <span className="text-xs font-semibold text-[#8A8A9A] uppercase tracking-wider mb-3 block">
-                  Step {idx + 1}
-                </span>
-                <h3
-                  className="text-xl font-semibold text-[#1A1A2E] mb-3"
-                  style={{ fontFamily: "var(--font-poppins)" }}
-                >
-                  {step.title}
-                </h3>
-                <p className="text-sm text-[#4A4A5A] leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerContainer>
 
-        <div className="text-center mt-12">
+        <FadeIn delay={0.4} className="text-center mt-12">
           <a
             href="#featured"
             className="inline-flex items-center gap-2 text-[#0B8C6B] font-medium hover:underline"
@@ -85,7 +91,7 @@ export function HowItWorksSection() {
             Explore featured stokvels
             <ArrowRight className="w-4 h-4" />
           </a>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );
