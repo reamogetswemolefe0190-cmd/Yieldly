@@ -15,7 +15,7 @@ export function LandingFooter() {
               </span>
             </div>
             <p className="text-sm text-white/60 max-w-[320px] leading-relaxed">
-              South Africa&apos;s first digital stokvel platform. Pool money with your community and invest in ETFs aligned to your shared goals.
+              Yieldly brings the trusted South African stokvel tradition into the digital age. Pool money with your community and invest in ETFs aligned to your shared goals.
             </p>
           </div>
           <div>

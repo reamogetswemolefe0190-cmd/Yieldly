@@ -12,7 +12,7 @@ export function HeroSection() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E2F0EC] text-[#0B8C6B] text-sm font-medium mb-8">
             <span className="w-2 h-2 rounded-full bg-[#0B8C6B]" />
-            South Africa&apos;s first digital stokvel platform
+            A modern way to save together
           </div>
 
           {/* Headline */}
