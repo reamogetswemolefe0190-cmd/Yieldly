@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { LandingHeader } from "@/components/layout/LandingHeader";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { HowItWorksSection } from "@/components/landing/HowItWorksSection";
+import { CommunitySection } from "@/components/landing/CommunitySection";
 import { FeaturedStokvelsSection } from "@/components/landing/FeaturedStokvelsSection";
 import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
 import { CTASection } from "@/components/landing/CTASection";
@@ -18,6 +19,7 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <HowItWorksSection />
+        <CommunitySection />
         <FeaturedStokvelsSection />
         <TestimonialsSection />
         <CTASection />

@@ -9,28 +9,46 @@ const testimonials = [
     location: "Johannesburg",
     text: "Yieldly helped our community buy our first property. The transparency and trust is exactly what we needed.",
     rating: 5,
+    avatar: { color: "#0B8C6B", face: "#E2F0EC" },
   },
   {
     name: "Lerato N.",
     location: "Cape Town",
     text: "I love how easy it is to track our progress. Seeing our ETF allocation grow each month keeps us motivated.",
     rating: 5,
+    avatar: { color: "#E88D3A", face: "#FEF3E2" },
   },
   {
     name: "Sizwe K.",
     location: "Durban",
     text: "The stokvel culture is strong in our community, but Yieldly made it modern. No more spreadsheets and WhatsApp groups.",
-    rating: 4,
+    rating: 5,
+    avatar: { color: "#14A085", face: "#E2F0EC" },
   },
 ];
 
+function TestimonialAvatar({ color, face }: { color: string; face: string }) {
+  return (
+    <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0" style={{ backgroundColor: color }}>
+      <svg viewBox="0 0 80 80" className="w-full h-full">
+        <circle cx="40" cy="40" r="40" fill={color} />
+        <circle cx="40" cy="40" r="24" fill={face} />
+        <circle cx="32" cy="35" r="3" fill="#1A1A2E" opacity="0.7" />
+        <circle cx="48" cy="35" r="3" fill="#1A1A2E" opacity="0.7" />
+        <path d="M 30 46 Q 40 54 50 46" stroke="#1A1A2E" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.7" />
+        <ellipse cx="40" cy="22" rx="16" ry="8" fill={color} opacity="0.3" />
+      </svg>
+    </div>
+  );
+}
+
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="bg-[#F6F7F9] py-20 md:py-28">
+    <section id="testimonials" className="bg-white py-20 md:py-28">
       <div className="max-w-[1280px] mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
           <span className="text-xs font-semibold uppercase tracking-wider text-[#0B8C6B] mb-3 block">
-            Testimonials
+            Reviews
           </span>
           <h2
             className="text-3xl md:text-4xl font-bold text-[#1A1A2E] mb-4"
@@ -47,7 +65,7 @@ export function TestimonialsSection() {
           {testimonials.map((t, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-2xl p-8 transition-all hover:shadow-lg"
+              className="bg-[#F6F7F9] rounded-2xl p-8 transition-all hover:shadow-lg"
             >
               <div className="flex items-center gap-1 mb-4">
                 {[1, 2, 3, 4, 5].map((s) => (
@@ -65,9 +83,7 @@ export function TestimonialsSection() {
                 "{t.text}"
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#0B8C6B] flex items-center justify-center text-white font-semibold text-sm">
-                  {t.name[0]}
-                </div>
+                <TestimonialAvatar color={t.avatar.color} face={t.avatar.face} />
                 <div>
                   <p className="text-sm font-medium text-[#1A1A2E]">{t.name}</p>
                   <p className="text-xs text-[#8A8A9A]">{t.location}</p>
