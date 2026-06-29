@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Star, Shield, Users } from "lucide-react";
 
 export function HeroSection() {
   return (
@@ -32,21 +32,47 @@ export function HeroSection() {
             Yieldly brings the trusted stokvel tradition into the digital age. Pool money with your community and invest in ETFs aligned to your shared goals.
           </p>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 mb-16">
-            <Link
-              href="/register"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#0B8C6B] text-white font-semibold text-base hover:bg-[#14A085] transition-all hover:shadow-lg hover:-translate-y-0.5"
-            >
-              Get started free
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <a
-              href="#how-it-works"
-              className="text-[#4A4A5A] font-medium hover:text-[#0B8C6B] transition-colors"
-            >
-              See how it works
-            </a>
+          {/* CTAs + Trust signals */}
+          <div className="flex flex-col items-center gap-6 mb-12">
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <Link
+                href="/register"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#0B8C6B] text-white font-semibold text-base hover:bg-[#14A085] transition-all hover:shadow-lg hover:-translate-y-0.5"
+              >
+                Get started free
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+              <a
+                href="#how-it-works"
+                className="text-[#4A4A5A] font-medium hover:text-[#0B8C6B] transition-colors"
+              >
+                See how it works
+              </a>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[#8A8A9A]">
+              <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-0.5">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <Star
+                      key={s}
+                      className={`w-3.5 h-3.5 ${s <= 4 ? "fill-[#E9C46A] text-[#E9C46A]" : "fill-[#E9C46A]/50 text-[#E9C46A]/50"}`}
+                    />
+                  ))}
+                </div>
+                <span className="font-medium text-[#4A4A5A]">4.8/5</span>
+                <span>from 200+ reviews</span>
+              </div>
+              <span className="hidden md:block w-px h-4 bg-[#E2E4E8]" />
+              <div className="flex items-center gap-1.5">
+                <Shield className="w-3.5 h-3.5 text-[#0B8C6B]" />
+                <span>Bank-level security</span>
+              </div>
+              <span className="hidden md:block w-px h-4 bg-[#E2E4E8]" />
+              <div className="flex items-center gap-1.5">
+                <Users className="w-3.5 h-3.5 text-[#0B8C6B]" />
+                <span>1,000+ South Africans</span>
+              </div>
+            </div>
           </div>
 
           {/* Simple illustration */}
