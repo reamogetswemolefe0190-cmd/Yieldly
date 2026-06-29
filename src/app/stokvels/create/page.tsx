@@ -49,7 +49,7 @@ export default function CreateStokvelPage() {
   const handleSubmit = () => {
     if (!validate()) return;
     toast.success(`Your stokvel "${name}" has been created!`);
-    router.push("/stokvels/s1");
+    router.push("/stokvels/s1/");
   };
 
   const goalIcons = {

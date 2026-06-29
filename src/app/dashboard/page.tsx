@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { MOCK_STOKVELS, MOCK_ACTIVITIES } from "@/lib/mock-data";
 import { AppShell } from "@/components/layout/AppShell";
@@ -111,8 +110,6 @@ function StatsCards({ loading }: { loading: boolean }) {
 }
 
 function QuickActions() {
-  const router = useRouter();
-
   return (
     <div className="flex flex-col md:flex-row gap-4 mt-6">
       <Link href="/stokvels" className="flex-1">
@@ -143,7 +140,6 @@ function QuickActions() {
 
 function MyStokvelsSection({ loading }: { loading: boolean }) {
   const myStokvels = MOCK_STOKVELS.slice(0, 3);
-  const router = useRouter();
 
   if (loading) {
     return (
@@ -198,10 +194,10 @@ function MyStokvelsSection({ loading }: { loading: boolean }) {
           const goal = stokvel.duration * stokvel.monthlyContribution;
 
           return (
-            <div
+            <Link
               key={stokvel.id}
-              onClick={() => router.push(`/stokvels/${stokvel.id}`)}
-              className="bg-white rounded-2xl border border-[#E2E4E8] p-6 cursor-pointer transition-all hover:shadow-lg hover:-translate-y-0.5"
+              href={`/stokvels/${stokvel.id}/`}
+              className="bg-white rounded-2xl border border-[#E2E4E8] p-6 cursor-pointer transition-all hover:shadow-lg hover:-translate-y-0.5 block"
             >
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-[#E2F0EC] text-[#0B8C6B]">
@@ -238,7 +234,7 @@ function MyStokvelsSection({ loading }: { loading: boolean }) {
                   R {goal.toLocaleString()} goal
                 </span>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>

@@ -193,7 +193,7 @@ export default function OnboardingPage() {
         bankName: data.bankName,
       });
       toast.success("Welcome to Yieldly! Your profile is ready.");
-      router.push("/dashboard");
+      router.push("/dashboard/");
     }
   };
 

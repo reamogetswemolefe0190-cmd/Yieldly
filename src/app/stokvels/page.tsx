@@ -2,7 +2,6 @@
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { MOCK_STOKVELS } from "@/lib/mock-data";
 import { AppShell } from "@/components/layout/AppShell";
 import { ProgressBar } from "@/components/shared/ProgressBar";
@@ -15,7 +14,6 @@ export default function StokvelsPage() {
   const [riskFilter, setRiskFilter] = useState("all");
   const [goalFilter, setGoalFilter] = useState("all");
   const [durationFilter, setDurationFilter] = useState("all");
-  const router = useRouter();
 
   const filtered = useMemo(() => {
     return MOCK_STOKVELS.filter((s) => {
@@ -121,10 +119,10 @@ export default function StokvelsPage() {
             {filtered.map((stokvel) => {
               const isFull = stokvel.currentMembers >= stokvel.maxMembers;
               return (
-                <div
+                <Link
                   key={stokvel.id}
-                  onClick={() => router.push(`/stokvels/${stokvel.id}`)}
-                  className="bg-white rounded-2xl border border-[#E2E4E8] p-6 cursor-pointer transition-all hover:shadow-lg hover:-translate-y-0.5"
+                  href={`/stokvels/${stokvel.id}/`}
+                  className="bg-white rounded-2xl border border-[#E2E4E8] p-6 cursor-pointer transition-all hover:shadow-lg hover:-translate-y-0.5 block"
                 >
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-[#E2F0EC] text-[#0B8C6B]">
@@ -166,7 +164,7 @@ export default function StokvelsPage() {
                       <Button className="w-full bg-[#0B8C6B] hover:bg-[#14A085] text-white">Join stokvel</Button>
                     )}
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>
