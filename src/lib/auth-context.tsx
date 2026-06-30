@@ -8,7 +8,7 @@ import React, {
   useCallback,
 } from "react";
 import type { User } from "./types";
-import { MOCK_USER } from "./mock-data";
+import { api } from "./api";
 
 interface AuthContextType {
   user: User | null;
@@ -27,65 +27,53 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Check for token on mount
   useEffect(() => {
-    const stored = localStorage.getItem("yieldly_user");
-    if (stored) {
-      try {
-        setUser(JSON.parse(stored));
-      } catch {
-        localStorage.removeItem("yieldly_user");
-      }
+    const token = localStorage.getItem("yieldly_token");
+    if (token) {
+      api.getMe()
+        .then((data) => setUser(data))
+        .catch(() => {
+          localStorage.removeItem("yieldly_token");
+        })
+        .finally(() => setIsLoading(false));
+    } else {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   }, []);
 
-  useEffect(() => {
-    if (user) {
-      localStorage.setItem("yieldly_user", JSON.stringify(user));
-    } else {
-      localStorage.removeItem("yieldly_user");
-    }
-  }, [user]);
-
   const login = useCallback(
-    async (email: string, _password: string): Promise<boolean> => {
-      // Simulate API delay
-      await new Promise((resolve) => setTimeout(resolve, 800));
-      if (email.toLowerCase() === "demo@yieldly.co.za") {
-        setUser({ ...MOCK_USER, email: "demo@yieldly.co.za" });
+    async (email: string, password: string): Promise<boolean> => {
+      try {
+        const data = await api.login(email, password);
+        localStorage.setItem("yieldly_token", data.token);
+        setUser(data.user);
         return true;
+      } catch (error) {
+        console.error("Login failed:", error);
+        return false;
       }
-      // For demo, any email works with a generated user
-      const demoUser: User = {
-        id: "demo",
-        email: email.toLowerCase(),
-        name: email.split("@")[0].replace(/\./g, " "),
-        kycStatus: "pending",
-        onboardingComplete: false,
-      };
-      setUser(demoUser);
-      return true;
     },
     []
   );
 
   const register = useCallback(
-    async (name: string, email: string, _password: string): Promise<boolean> => {
-      await new Promise((resolve) => setTimeout(resolve, 800));
-      const newUser: User = {
-        id: "new-" + Date.now(),
-        email: email.toLowerCase(),
-        name,
-        kycStatus: "pending",
-        onboardingComplete: false,
-      };
-      setUser(newUser);
-      return true;
+    async (name: string, email: string, password: string): Promise<boolean> => {
+      try {
+        const data = await api.register(name, email, password);
+        localStorage.setItem("yieldly_token", data.token);
+        setUser(data.user);
+        return true;
+      } catch (error) {
+        console.error("Registration failed:", error);
+        return false;
+      }
     },
     []
   );
 
   const logout = useCallback(() => {
+    localStorage.removeItem("yieldly_token");
     setUser(null);
   }, []);
 
@@ -93,10 +81,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser((prev) => (prev ? { ...prev, ...updates } : null));
   }, []);
 
-  const completeOnboarding = useCallback((updates: Partial<User>) => {
-    setUser((prev) =>
-      prev ? { ...prev, ...updates, onboardingComplete: true, kycStatus: "verified" } : null
-    );
+  const completeOnboarding = useCallback(async (updates: Partial<User>) => {
+    try {
+      await api.updateMe({
+        ...updates,
+        onboardingComplete: true,
+        kycStatus: "verified",
+      });
+      setUser((prev) =>
+        prev ? { ...prev, ...updates, onboardingComplete: true, kycStatus: "verified" } : null
+      );
+    } catch (error) {
+      console.error("Onboarding update failed:", error);
+    }
   }, []);
 
   return (
